@@ -4,22 +4,27 @@ import java.util.Scanner;
 
 public class SearchPattern {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         if (args[0].equals("search")) {
             SearchPattern search = new SearchPattern();
-            search.searchPattern(args[1], args[2]);
+            search.searchPatternsInFile(args[1], args[2]);
         } else {
             System.out.println("Invalid command");
         }
     }
 
-    public void searchPattern(String pattern, String file) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File(file));
-        while(sc.hasNextLine()) {
-            String line = sc.nextLine();
-            if (line.contains(pattern)) {
-                System.out.println(line);
+    public void searchPatternsInFile(String pattern, String path) {
+        try {
+            Scanner sc = new Scanner(new File(path));
+            while(sc.hasNextLine()) {
+                String line = sc.nextLine();
+                if (line.contains(pattern)) {
+                    System.out.println(line);
+                }
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
         }
+
     }
 }
