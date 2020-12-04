@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class SearchPattern {
 
     public static void main(String[] args) {
+        if (args.length != 3) {
+            System.out.println("Wrong Input");
+            System.exit(0);
+        }
         if (args[0].equals("search")) {
             SearchPattern search = new SearchPattern();
             search.searchPatternsInFile(args[1], args[2]);
